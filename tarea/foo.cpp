@@ -174,12 +174,20 @@ Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
 
 Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador *
-    Matriz2D result(m1.filas, m1.columnas);
+    Matriz2D result(m1.filas, m2.columnas);
 
-    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
+    if(m1.columnas == m2.filas){
+        for (int i = 0; i < result.filas; ++i) {
+            for (int j = 0; j < result.filas; ++j) {
+                result.ptr[i][j] = 0.0;
+            }
+        }
+
         for (int i = 0; i < result.filas; ++i) {
             for (int j = 0; j < result.columnas; ++j) {
-                result.ptr[i][j] = m1.ptr[i][j] * m2.ptr[i][j];
+                for (int k = 0; k < m1.columnas; ++k) {
+                    result.ptr[i][j] += m1.ptr[i][k] * m2.ptr[k][j];
+                }
             }
         }
     } else {

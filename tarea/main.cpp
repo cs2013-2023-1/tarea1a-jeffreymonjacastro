@@ -11,36 +11,16 @@
 int main(){
     srand(time(nullptr));
 
-    Matriz2D m3(2);
+    Matriz2D m1(2,3);
+    Matriz2D m2 = m1;
+    Matriz2D m3 = t(m2);
+    Matriz2D m4 = m1 * m3;
 
-    Matriz2D m4(2);
-
-    Matriz2D m7 = m3 + m4;    // Suma de matrices
-    Matriz2D m8 = m3 - m4;    // Resta de matrices
-    Matriz2D m9 = m3 * m4;    // Multiplicación de matrices
-
-    Matriz2D m10 = m3 + 3;
-    Matriz2D m11 = m3 - 1.2;
-    Matriz2D m12 = m3 * 5;
-    Matriz2D m13 = m3 / 7;
-
+    cout << m1;
+    cout << endl;
     cout << m3;
     cout << endl;
     cout << m4;
-    cout << endl;
-    cout << m7;
-    cout << endl;
-    cout << m8;
-    cout << endl;
-    cout << m9;
-    cout << endl;
-    cout << m10;
-    cout << endl;
-    cout << m11;
-    cout << endl;
-    cout << m12;
-    cout << endl;
-    cout << m13;
     cout << endl;
 
 }
