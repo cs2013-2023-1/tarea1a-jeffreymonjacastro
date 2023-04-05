@@ -133,10 +133,9 @@ std::ostream& operator<<(std::ostream& os, const Matriz2D& m){
 
 Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador +
+    Matriz2D result(m1.filas, m1.columnas);
 
     if(m1.filas == m2.filas && m1.columnas == m2.columnas){
-        Matriz2D result(m1.filas, m1.columnas);
-
         for (int i = 0; i < result.filas; ++i) {
             for (int j = 0; j < result.columnas; ++j) {
                 result.ptr[i][j] = m1.ptr[i][j] + m2.ptr[i][j];
@@ -148,48 +147,48 @@ Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
     } else {
         cout << "Error: las matrices deben ser del mismo tamanio" << endl;
 
-        return 0;
+        result.ptr = nullptr;
     }
+
+    return result;
 }
 
 Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador -
-    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
-        Matriz2D result(m1.filas, m1.columnas);
+    Matriz2D result(m1.filas, m1.columnas);
 
+    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
         for (int i = 0; i < result.filas; ++i) {
             for (int j = 0; j < result.columnas; ++j) {
                 result.ptr[i][j] = m1.ptr[i][j] - m2.ptr[i][j];
             }
         }
-
-        return result;
-
     } else {
         cout << "Error: las matrices deben ser del mismo tamanio" << endl;
 
-        return 0;
+        result.ptr = nullptr;
     }
+
+    return result;
 }
 
 Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador *
-    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
-        Matriz2D result(m1.filas, m1.columnas);
+    Matriz2D result(m1.filas, m1.columnas);
 
+    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
         for (int i = 0; i < result.filas; ++i) {
             for (int j = 0; j < result.columnas; ++j) {
                 result.ptr[i][j] = m1.ptr[i][j] * m2.ptr[i][j];
             }
         }
-
-        return result;
-
     } else {
         cout << "Error: las matrices deben ser del mismo tamanio" << endl;
 
-        return 0;
+        result.ptr = nullptr;
     }
+
+    return result;
 }
 
 Matriz2D operator+(const Matriz2D& m, float n){
