@@ -11,7 +11,15 @@
 int main(){
     srand(time(nullptr));
 
-    Matriz2D m1;
+    Matriz2D m1(3,4);
+
+    Matriz2D m2 = t(m1); // error
+
 
     cout << m1;
+    cout << endl;
+//    cout << m2;
+//    cout << endl;
+//    cout << m1;
+
 }
