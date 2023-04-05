@@ -99,23 +99,23 @@ Matriz2D::Matriz2D(Matriz2D&& m){
 
 Matriz2D t(Matriz2D& m){
     // Transpuesta de una matriz
-    Matriz2D newM;
+    Matriz2D result;
     
-    newM.filas = m.filas;
-    newM.columnas = m.columnas;
-    newM.ptr = new float*[newM.filas];
+    result.filas = m.columnas;
+    result.columnas = m.filas;
+    result.ptr = new float*[result.filas];
     
-    for(int i = 0; i < newM.filas; i++){
-        newM.ptr[i] = new float[newM.columnas];
+    for(int i = 0; i < result.filas; i++){
+        result.ptr[i] = new float[result.columnas];
     }
 
-    for (int i = 0; i < newM.filas; ++i) {
-        for (int j = 0; j < newM.columnas; ++j) {
-            newM.ptr[i][j] = m.ptr[j][i];
+    for (int i = 0; i < result.filas; ++i) {
+        for (int j = 0; j < result.columnas; ++j) {
+            result.ptr[i][j] = m.ptr[j][i];
         }
     }
     
-    return newM;
+    return result;
 }
 
 std::ostream& operator<<(std::ostream& os, const Matriz2D& m){
@@ -133,30 +133,115 @@ std::ostream& operator<<(std::ostream& os, const Matriz2D& m){
 
 Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador +
+
+    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
+        Matriz2D result(m1.filas, m1.columnas);
+
+        for (int i = 0; i < result.filas; ++i) {
+            for (int j = 0; j < result.columnas; ++j) {
+                result.ptr[i][j] = m1.ptr[i][j] + m2.ptr[i][j];
+            }
+        }
+
+        return result;
+
+    } else {
+        cout << "Error: las matrices deben ser del mismo tamanio" << endl;
+
+        return 0;
+    }
 }
 
 Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador -
+    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
+        Matriz2D result(m1.filas, m1.columnas);
+
+        for (int i = 0; i < result.filas; ++i) {
+            for (int j = 0; j < result.columnas; ++j) {
+                result.ptr[i][j] = m1.ptr[i][j] - m2.ptr[i][j];
+            }
+        }
+
+        return result;
+
+    } else {
+        cout << "Error: las matrices deben ser del mismo tamanio" << endl;
+
+        return 0;
+    }
 }
 
 Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador *
+    if(m1.filas == m2.filas && m1.columnas == m2.columnas){
+        Matriz2D result(m1.filas, m1.columnas);
+
+        for (int i = 0; i < result.filas; ++i) {
+            for (int j = 0; j < result.columnas; ++j) {
+                result.ptr[i][j] = m1.ptr[i][j] * m2.ptr[i][j];
+            }
+        }
+
+        return result;
+
+    } else {
+        cout << "Error: las matrices deben ser del mismo tamanio" << endl;
+
+        return 0;
+    }
 }
 
 Matriz2D operator+(const Matriz2D& m, float n){
     // Sobrecarga del operador +
+    Matriz2D result(m.filas, m.columnas);
+
+    for (int i = 0; i < result.filas; ++i) {
+        for (int j = 0; j < result.columnas; ++j) {
+            result.ptr[i][j] = m.ptr[i][j] + n;
+        }
+    }
+
+    return result;
 }
 
 Matriz2D operator-(const Matriz2D& m, float n){
     // Sobrecarga del operador -
+    Matriz2D result(m.filas, m.columnas);
+
+    for (int i = 0; i < result.filas; ++i) {
+        for (int j = 0; j < result.columnas; ++j) {
+            result.ptr[i][j] = m.ptr[i][j] - n;
+        }
+    }
+
+    return result;
 }
 
 Matriz2D operator*(const Matriz2D& m, float n){
     // Sobrecarga del operador *
+    Matriz2D result(m.filas, m.columnas);
+
+    for (int i = 0; i < result.filas; ++i) {
+        for (int j = 0; j < result.columnas; ++j) {
+            result.ptr[i][j] = m.ptr[i][j] * n;
+        }
+    }
+
+    return result;
 }
 
 Matriz2D operator/(const Matriz2D& m, float n){
     // Sobrecarga del operador /
+    Matriz2D result(m.filas, m.columnas);
+
+    for (int i = 0; i < result.filas; ++i) {
+        for (int j = 0; j < result.columnas; ++j) {
+            result.ptr[i][j] = m.ptr[i][j] / n;
+        }
+    }
+
+    return result;
 }
 
 float Matriz2D::get(int i, int j){
