@@ -9,5 +9,9 @@
 
 // Puede validar su codigo con la siguiente funcion main
 int main(){
+    srand(time(nullptr));
 
+    Matriz2D m1;
+
+    cout << m1;
 }

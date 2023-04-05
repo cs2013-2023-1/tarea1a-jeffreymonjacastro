@@ -3,3 +3,5 @@ tarea/*.exe
 tarea/*.o
 tarea/main
 *.xml
+cmake-build-debug/*
+.idea/*

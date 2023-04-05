@@ -2,6 +2,19 @@
 
 Matriz2D::Matriz2D(){
     // Constructor por defecto
+    filas = 3;
+    columnas = 3;
+    ptr = new float*[filas];
+
+    for(int i = 0; i < filas; i++){
+        ptr[i] = new float[columnas];
+    }
+
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            ptr[i][j] = rand()%;
+        }
+    }
 }
 
 Matriz2D::Matriz2D(int n){
@@ -26,6 +39,15 @@ Matriz2D t(Matriz2D& m){
 
 std::ostream& operator<<(std::ostream& os, const Matriz2D& m){
     // Sobrecarga del operador <<
+    for(int i = 0; i < m.filas; i++){
+        for(int j = 0; j < m.columnas; j++){
+            os << m.ptr[i][j] << " ";
+        }
+
+        os << endl;
+    }
+
+    return os;
 }
 
 Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
