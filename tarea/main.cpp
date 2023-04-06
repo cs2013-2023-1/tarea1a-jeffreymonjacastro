@@ -8,19 +8,34 @@
 #include "foo.h"
 
 // Puede validar su codigo con la siguiente funcion main
+
+auto random(int x, int y){ return rand() % (y-x+1) + x;}
+
 int main(){
     srand(time(nullptr));
 
-    Matriz2D m1(2,3);
-    Matriz2D m2 = m1;
-    Matriz2D m3 = t(m2);
-    Matriz2D m4 = m1 * m3;
+    Matriz2D m1(5,6);
+    Matriz2D m2 = m1 / 5;
+    cout << (m2.getFilas() == 5) << endl;
+    cout << (m2.getColumnas() == 6) << endl;
 
-    cout << m1;
+    cout << m1 << endl;
     cout << endl;
-    cout << m3;
+    cout << m2 << endl;
     cout << endl;
-    cout << m4;
-    cout << endl;
+
+    int i = random(0,4);
+    int j = random(0,5);
+
+    cout << i << " " << j << endl;
+
+    cout << m2.get(i,j) << endl;
+
+    cout << m1.get(i,j) / 5 << endl;
+
+    if(m2.get(i,j) == (m1.get(i,j) / 5))
+        cout << "True" << endl;
+    else
+        cout << "False" << endl;
 
 }

@@ -106,7 +106,7 @@ TEST_CASE("parte3", "[sobrecarga-con-matrices]"){
         Matriz2D m2 = m1;
         Matriz2D m3 = m1 * t(m2);
         REQUIRE(m3.getFilas() == 5);
-        REQUIRE(m3.getColumnas() == 7);
+        REQUIRE(m3.getColumnas() == 5);
 
         int i = random(0,4);
         int j = random(0,6);
@@ -167,6 +167,6 @@ TEST_CASE("parte4", "[sobrecarga-con-escalares]"){
         int i = random(0,4);
         int j = random(0,5);
 
-        REQUIRE(m2.get(i,j) == m1.get(i,j) / 5);
+        REQUIRE(m2.get(i,j) == (m1.get(i,j) / 5));
     }
 }
